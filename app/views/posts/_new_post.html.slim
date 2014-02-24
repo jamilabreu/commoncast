@@ -1,0 +1,15 @@
+= simple_form_for @post do |f|
+	= f.input :title, label: false, placeholder: "title", input_html: { rows: 1, maxlength: 80 }
+	= f.input :body, label: false, placeholder: "share note or paste url ...", input_html: { rows: 1, class: 'expanding' }
+	.form-actions
+		.post_communities class="input check_boxes optional"
+			- current_user.communities.map do |community|
+				input class="check_boxes optional" id="post_community_ids_#{community.id}" name="post[community_ids][]" type="checkbox" value="#{community.id}" checked=('checked' if community.id == @community.try(:id))
+				label for="post_community_ids_#{community.id}"= community.name
+		div style="display: none"
+			= f.collection_radio_buttons :type, [['Link', 'Link'], ['Status', 'Status']], :first, :last, checked: 'Status'
+		= f.button :button, { disable_with: 'Sharing...' } do
+			| Share
+	.form-loading
+		i.fa.fa-refresh.fa-spin
+		span Loading URL ...

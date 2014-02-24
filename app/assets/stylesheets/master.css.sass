@@ -1,0 +1,411 @@
+$font-family: "proxima-nova"
+$black: #383A3D
+$blue: #00AED7
+
+// MIXINS
+@mixin clearfix
+	&:after
+		content: ""
+		display: table
+		clear: both
+
+@mixin ellipsis
+	overflow: hidden
+	text-overflow: ellipsis
+	white-space: nowrap
+
+a
+	text-decoration: none
+
+img
+	display: block
+	margin: 0
+	max-width: 100%
+
+body
+	background: #F0F0F0 image-url("noise.gif")
+	font-family: $font-family
+
+header
+	border-bottom: 1px solid rgba(0,0,0,0.075)
+	font-family: "ff-utility-web-pro"
+	ul
+		display: inline-block
+		li
+			display: inline-block
+			a
+				color: #AAA
+				display: block
+				line-height: 46px
+				padding: 0 16px
+		&.logo
+			li
+				a
+					padding-left: 0
+					padding-right: 0
+		&.nav
+			float: right
+			font-weight: 300
+			li.active
+				a
+					background: black
+					color: white
+	&.active
+		background: $black
+		border: none
+		ul
+			li
+				a
+					color: #F0F0F0
+					color: rgba(255,255,255,0.8)
+					text-shadow: 1px 1px 1px #222
+					&:hover
+						color: white
+
+.title
+	background: $blue
+	color: white
+	font-family: "ff-utility-web-pro"
+	padding: 12px 0 11px
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2)
+	i
+		margin-right: 10px
+
+.container
+	margin: 0 auto
+	width: 590px
+	// @include container
+	// @include susy-breakpoint(768px, $tablet)
+	// 	@include container
+
+// FORMS
+form
+	input, textarea
+		border: 1px solid #DDD
+		border-radius: 3px
+		box-sizing: border-box
+		display: block
+		font-family: $font-family
+		font-size: 16px
+		font-weight: 300
+		margin: 0
+		padding: 13px 15px
+		&:focus
+			outline: none
+	input.check_boxes
+		display: inline-block
+		margin-right: 5px
+	textarea
+		resize: none
+	button
+		background: $blue
+		border: 0
+		border-radius: 5px
+		box-shadow: inset -1px -1px 0 #80d7eb, 1px 1px 0 #0094b7
+		color: white
+		font-family: "ff-utility-web-pro", "museo-slab"
+		font-size: 23px
+		font-weight: 300
+		padding: 14px 28px 12px
+		text-shadow: 1px 1px 1px #00A8A8
+		i
+			margin-left: 14px
+			position: relative
+			top: 1px
+		&:active
+			box-shadow: inset 1px 1px 0 #0082a1
+		&:focus
+			outline: none
+		&:hover
+			cursor: pointer
+
+// WELCOME
+.welcome-header
+	font-size: 32px
+	font-weight: 300
+	padding: 60px 0 35px
+	text-align: center
+	text-shadow: 1px 1px 1px white
+	span
+		color: #FB464A //#FC006D
+
+.welcome
+	.new_user
+		border-bottom: 1px solid #DDD
+		padding: 60px 0
+		text-align: center
+		input
+			font-size: 24px
+			margin: 0 auto
+			min-width: 300px
+	.new_user, .edit_user
+		button
+			background: $blue
+			margin-top: 20px
+
+// POSTS
+.new_post
+	margin-top: 25px
+	input[type="text"], textarea
+		box-shadow: 0 1px 0 #E0E0E0
+		font-size: 17px
+		width: 100%
+	#post_title
+		font-weight: 600
+		display: none
+		margin-bottom: 10px
+	#post_url
+	.form-actions
+		border-bottom: 1px solid #DDD
+		display: none
+		padding-bottom: 25px
+		.post_communities
+			padding: 20px 5px
+			text-shadow: 1px 1px 1px white
+			input[type="checkbox"]
+				display: none
+				+ label
+					display: inline-block
+					line-height: 28px
+					margin-right: 15px
+					&:before
+						content: "\f096"
+						font-family: "FontAwesome"
+						letter-spacing: 6px
+						position: relative
+						top: 1px
+			input[type="checkbox"]:checked
+				+ label:before
+					content: "\f046"
+					letter-spacing: 4px
+
+	.form-loading
+		display: none
+		color: #FC006D
+		font-weight: 600
+		padding: 13px 0
+		text-shadow: 1px 1px 1px white
+		i
+			margin-right: 8px
+
+.section
+	background: white
+	border: 1px solid #DDD
+	border-radius: 6px
+	margin-top: 25px
+
+.tabs
+	border-bottom: 1px dotted #EEE
+	ul
+		li
+			display: inline-block
+			a
+				color: #979FA8
+				display: block
+				line-height: 52px
+			&.active
+				a
+					color: #00AED7
+	ul.check
+		float: right
+		li
+			a
+				span.fa-stack
+					background: #F9F9F9
+					border: 1px solid #EEE
+					border-left: 1px solid #E2E2E2
+					border-right: 1px solid #E2E2E2
+					border-radius: 100px
+					margin-right: 9px
+					text-align: center
+				i.fa-check
+					position: relative
+					top: 1px
+			&.active
+				a
+					span.fa-stack
+						background: $blue
+						border-color: $blue
+						box-shadow: inset -1px -1px 0 #0094b7
+					i.fa-check
+						color: white
+	ul.sort
+		li
+			a
+				padding: 0 15px
+				i
+					margin-right: 6px
+			&:first-child
+				a
+					padding-left: 20px
+// .tabs
+// 	border-bottom: 1px dotted #EEE
+// 	ul
+// 		li
+// 			display: inline-block
+// 			a
+// 				color: #979FA8
+// 				display: block
+// 				// font-size: 15px
+// 				line-height: 52px
+// 				padding: 0 15px
+// 				i
+// 					margin-right: 6px
+// 				&:hover
+// 					color: #858C94
+// 			&:first-child
+// 				a
+// 					background: red
+// 					padding-left: 30px
+// 			&.active
+// 				a
+// 					color: #00AED7//#00BFFE
+// 		li.approved
+// 			float: right
+			// // background: red
+			// a
+			// 	// padding: 0 15px
+			// 	i
+			// 		margin: 0
+
+.post-check
+	color: #00AED7
+	float: right
+
+
+.post
+	@include clearfix
+	border-bottom: 1px dotted #EEE
+	padding: 15px 17px 15px 20px
+	&:last-child
+		border: none
+
+.post-actions
+	float: left
+	a
+		color: #999
+		display: inline-block
+		padding: 20px
+		&:hover
+			color: #30A8A8
+		&:first-child
+			padding-right: 10px
+		&:last-child
+			padding-left: 10px
+
+.post-image
+	float: left
+	img
+		border-radius: 3px
+		height: 54px
+		width: 54px
+
+.post-main
+	margin-left: 50px
+	padding: 2px 0 0 18px
+
+.post-title
+	// @include ellipsis
+	a
+		color: black
+		text-decoration: underline
+
+.post.link
+	.post-main
+		.post-title
+			a
+				text-decoration: underline
+
+.post-communities
+	margin-top: 6px
+	color: #999
+	font-size: 12px
+	a
+		color: #979FA8
+		display: inline-block
+		i
+			font-size: 14px
+			margin-right: 3px
+		+ a
+			margin-left: 10px
+		&:hover
+			color: #00AED7
+
+
+// SHOW
+.post-show
+
+.post-show-title
+	font-size: 32px
+	padding: 30px 0 10px
+	text-shadow: 1px 1px 1px white
+
+.post-show-communities
+
+// .post-title
+// 	@include ellipsis
+// 	.post-cast, .post-comment
+// 		color: #999
+// 		display: inline-block
+// 		&:hover
+// 			color: #30A8A8
+// 	.post-cast
+// 		padding: 20px 18px 20px 20px
+// 	.post-comment
+// 		padding: 20px 20px 20px 20px
+// 	.post-link, .post-status
+// 		color: black
+// 	.post-link
+// 		border-bottom: 1px dotted #999
+
+// .post-more
+// 	// background: #f9f9f9
+// 	// border-top: 1px solid #f3f3f3
+// 	padding: 0 20px 10px
+// 	a
+// 		color: #999
+// 		font-size: 13px
+// 		+ a
+// 			margin-left: 13px
+
+
+
+
+// 	a
+// 		border-bottom: 1px dotted #999
+// 		color: $black
+
+// .post-cast
+// 	display: inline-block
+// 	a
+// 		color: #999
+// 		display: block
+// 		padding: 20px 18px 20px 21px
+// 		&:hover
+// 			color: #037FFD
+
+
+
+// .post-title
+// 	a
+// 		border-bottom: 1px dotted #999
+// 		color: $black
+// 		text-shadow: 1px 1px 1px white
+// 		&:hover
+// 			color: #037FFD
+// 		i
+// 			border: none
+// 	i
+// 		color: #999
+// 		margin-right: 15px
+// 		width: 16px
+
+// .post-actions
+// 	font-size: 14px
+// 	margin-top: 10px
+// 	a
+// 		color: #999
+// 		&:hover
+// 			color: #037FFD
+// 		i
+// 			margin-right: 6px

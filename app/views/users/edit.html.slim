@@ -1,0 +1,12 @@
+.container
+	.user
+		= render 'users/profile'
+		.section
+			= render 'users/tabs'
+			h1 Edit
+			= simple_form_for current_user do |f|
+				- current_user.errors.full_messages.each do |message|
+					= message
+				= f.input :email, label: false, placeholder: "Email", autofocus: true
+				= f.button :button do
+					| Update Account

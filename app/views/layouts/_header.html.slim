@@ -1,0 +1,18 @@
+header class=("active" if user_signed_in?)
+	.header.container
+		ul.logo
+			li
+				= link_to "commoncast", root_path
+		ul.nav
+			- if user_signed_in?
+				/ li class=('active' if current_page?(root_path) || current_page?(approved_posts_path))
+				/ 	= link_to approved_posts_path do
+				/ 		i.fa.fa-check
+				li class=('active' if current_page?(root_path) || current_page?(posts_path))
+					= link_to root_path do
+						i.fa.fa-bars
+				li class=('active' if current_page?(current_user))
+					= link_to current_user do
+						i.fa.fa-user
+			- else
+				li= link_to "login", new_user_session_path

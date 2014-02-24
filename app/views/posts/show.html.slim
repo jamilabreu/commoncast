@@ -1,0 +1,8 @@
+.container
+	.post-show
+		.post-show-title
+			= @post.title
+			= simple_format(@post.title).gsub(/\n/, '<br/>').gsub(URI.regexp, '<a href="\0">\0</a>').html_safe
+		.post-show-communities
+			- @post.communities.map do |community|
+				= link_to community.name, community_path(community)

@@ -1,0 +1,22 @@
+.post class=("link" if post.type == "Link")
+	- if post.approved
+		= link_to root_path, class: "post-check" do
+			i.fa.fa-check
+	.post-image
+		= link_to image_tag("http://graph.facebook.com/#{rand(300000..302715)}/picture?type=large"), post.user
+	.post-main
+		.post-title
+			- if post.type == "Link"
+				= link_to post.title, post.url, target: "_blank"
+			- else
+				= post.title.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe
+		.post-communities
+			= link_to root_path do
+				i.fa.fa-rss
+			= link_to post_path(post) do
+				i.fa.fa-comments-o
+			- post.communities.map do |community|
+				- if @community
+					= link_to community.name.downcase, params.merge(f: community.id)
+				- else
+					= link_to community.name.downcase, community_path(community)

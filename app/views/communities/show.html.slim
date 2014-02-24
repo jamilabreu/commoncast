@@ -1,0 +1,18 @@
+- content_for :javascript do
+  = javascript_include_tag 'expanding', 'posts'
+
+.title
+	.container
+		i.fa.fa-chevron-right
+		/ i.fa.fa-level-up.fa-rotate-90
+		= @community.name
+
+.container
+	- if current_user.communities.include? @community
+		= render 'posts/new_post'
+	.section
+		= render 'posts/tabs'
+		- if @posts.present?
+			= render @posts
+		- else
+			| No posts to show. Join Communities
