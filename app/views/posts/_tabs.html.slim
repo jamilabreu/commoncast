@@ -1,12 +1,12 @@
 .tabs
 	ul.check
-		li class=('active' unless params[:approved])
-			= link_to params[:approved] ? url_for(only_path: false, relevant: params[:relevant]) : params.merge(approved: false) do
+		li class=('active' unless params[:all])
+			= link_to params[:all] ? url_for(only_path: false, relevant: params[:relevant]) : params.merge(all: true) do
 				span.fa-stack
 					i.fa.fa-check
 	ul.sort
 		li class=('active' unless params[:relevant])
-			= link_to url_for(only_path: false, approved: params[:approved]) do
+			= link_to url_for(only_path: false, all: params[:all]) do
 				i.fa.fa-clock-o
 				| Recent
 		li class=('active' if params[:relevant])

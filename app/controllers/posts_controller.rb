@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to recent_posts_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
         format.html { render action: 'new' }
@@ -28,17 +28,18 @@ class PostsController < ApplicationController
   end
 
   def fetch
+    url = params[:q]
     begin
-      url = params[:q]
       page = Nokogiri::HTML(open(url))
       begin
         title = page.at('meta[property="og:title"]')['content']
       rescue
         title = page.title
       end
-      @title = title.strip
     rescue
+      title = url
     end
+    @title = title.strip
   end
 
   private

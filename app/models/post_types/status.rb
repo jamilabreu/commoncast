@@ -6,6 +6,6 @@ class Status < Post
 	end
 
   def to_partial_path
-    'posts/post'
+    'posts/post' # TODO: Update when ready
   end
 end

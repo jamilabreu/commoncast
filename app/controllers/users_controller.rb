@@ -1,11 +1,6 @@
 class UsersController < Devise::RegistrationsController
   before_action :set_user, only: [:show]
 
-  def index
-    @post = Post.new
-    @posts = Post.joins(:communities).where(communities: { id: current_user.community_ids }).group("posts.id").order(approved: :desc).order(created_at: :desc)
-  end
-
   def new
     @user = User.new
   end
@@ -56,8 +51,6 @@ class UsersController < Devise::RegistrationsController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     current_user.destroy
     respond_to do |format|
@@ -71,7 +64,6 @@ class UsersController < Devise::RegistrationsController
       @user = User.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, culture_ids: [], school_ids: [])
     end

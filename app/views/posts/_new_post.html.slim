@@ -10,6 +10,6 @@
 			= f.collection_radio_buttons :type, [['Link', 'Link'], ['Status', 'Status']], :first, :last, checked: 'Status'
 		= f.button :button, { disable_with: 'Sharing...' } do
 			| Share
-	.form-loading
-		i.fa.fa-refresh.fa-spin
-		span Loading URL ...
+		.form-loading
+			i.fa.fa-refresh.fa-spin
+			span Loading URL ...
