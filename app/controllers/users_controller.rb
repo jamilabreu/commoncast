@@ -6,7 +6,8 @@ class UsersController < Devise::RegistrationsController
   end
 
   def show
-    @posts = @user.posts
+    @post = Post.new
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   def edit
@@ -30,7 +31,7 @@ class UsersController < Devise::RegistrationsController
         # Email temporary password
         UserMailer.temporary_password(@user, generated_password).deliver
 
-        format.html { redirect_to edit_user_registration_path, notice: 'User was successfully created.' }
+        format.html { redirect_to edit_user_communities_path, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }

@@ -1,6 +1,6 @@
 = simple_form_for @post do |f|
 	= f.input :title, label: false, placeholder: "title", input_html: { rows: 1, maxlength: 80 }
-	= f.input :body, label: false, placeholder: "share note or paste url ...", input_html: { rows: 1, class: 'expanding' }
+	= f.input :body, label: false, placeholder: "compose note or paste url ...", input_html: { rows: 1, class: 'expanding' }
 	.form-actions
 		.post_communities class="input check_boxes optional"
 			- current_user.communities.map do |community|

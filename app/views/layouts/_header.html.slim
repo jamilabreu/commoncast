@@ -14,5 +14,8 @@ header class=("active" if user_signed_in?)
 				li class=('active' if current_page?(current_user))
 					= link_to current_user do
 						i.fa.fa-user
+				li class=('active' if current_page?(edit_user_communities_path))
+					= link_to edit_user_communities_path do
+						i.fa.fa-gear
 			- else
 				li= link_to "login", new_user_session_path

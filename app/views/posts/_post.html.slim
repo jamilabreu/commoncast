@@ -1,9 +1,9 @@
-.post class=("link" if post.type == "Link")
+.post
 	- if post.approved
 		= link_to root_path, class: "post-check" do
 			i.fa.fa-check
 	.post-image
-		= link_to image_tag("http://graph.facebook.com/#{rand(300000..302715)}/picture?type=large"), post.user
+		= link_to image_tag(post.user.image), post.user
 	.post-main
 		.post-title
 			- if post.type == "Link"

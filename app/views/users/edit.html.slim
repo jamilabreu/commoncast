@@ -2,7 +2,7 @@
 	.user
 		= render 'users/profile'
 		.section
-			= render 'users/tabs'
+			= render 'users/tabs_edit'
 			h1 Edit
 			= simple_form_for current_user do |f|
 				- current_user.errors.full_messages.each do |message|

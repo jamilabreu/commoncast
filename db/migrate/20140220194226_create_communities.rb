@@ -1,7 +1,7 @@
 class CreateCommunities < ActiveRecord::Migration
   def change
     create_table :communities do |t|
-      t.string :name
+      t.string :name, null:false
       t.string :filter_name
       t.string :title_name
       t.string :slug

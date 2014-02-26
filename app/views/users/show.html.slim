@@ -1,6 +1,7 @@
 .container
-	.user
+	.user-show
 		= render 'users/profile'
+		= render 'posts/new_post' if @user == current_user
 		.section
 			= render 'users/tabs' if @user == current_user
 			= render @posts

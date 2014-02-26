@@ -1,3 +1,9 @@
 .section
-	div style="padding: 1px"
-		= image_tag("http://graph.facebook.com/#{rand(300000..302715)}/picture?type=large", size: "125x125", style: "border-radius: 4px 0 0 4px")
+	.profile
+		.profile-image
+			= image_tag @user.try(:image)
+		.profile-main
+			.profile-communities
+				ul
+					- @user.try(:communities).try(:map) do |community|
+						li= link_to community.name, community_path(community)

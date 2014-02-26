@@ -1,15 +1,18 @@
 .tabs
-	ul.check
+	ul.toggle
 		li class=('active' unless params[:all])
-			= link_to params[:all] ? url_for(only_path: false, relevant: params[:relevant]) : params.merge(all: true) do
-				span.fa-stack
-					i.fa.fa-check
+			= link_to params[:all] ? url_for(only_path: false, recent: params[:recent], relevant: params[:relevant]) : params.merge(all: true) do
+				i.fa.fa-check
 	ul.sort
-		li class=('active' unless params[:relevant])
-			= link_to url_for(only_path: false, all: params[:all]) do
-				i.fa.fa-clock-o
+		li class=('active' unless params[:recent] || params[:relevant])
+			= link_to url_for only_path: false, all: params[:all] do
+				i.fa.fa-rss
+				| Popular
+		li class=('active' if params[:recent])
+			= link_to url_for only_path: false, recent: true, all: params[:all] do
+				i.fa.fa-star-o
 				| Recent
 		li class=('active' if params[:relevant])
-			= link_to params.merge(relevant: true) do
+			= link_to url_for only_path: false, relevant:true, all: params[:all] do
 				i.fa.fa-heart-o
 				| Relevant

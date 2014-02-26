@@ -1,8 +1,7 @@
 .container
 	.user
-		= render 'users/profile'
 		.section
-			= render 'users/tabs'
+			= render 'users/tabs_edit'
 			h1 Edit Communities
 			div= link_to "account", edit_user_registration_path
 			div= link_to "logout", destroy_user_session_path, method: :delete

@@ -17,6 +17,7 @@ puts "CREATE USERS"
 	User.create(
 		email: Faker::Internet.email,
 		password: "password",
+		image: "http://graph.facebook.com/#{rand(300000..302715)}/picture?type=large",
 		communities: Community.all.sample(rand(2..6))
 	)
 end

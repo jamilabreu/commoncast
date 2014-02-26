@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.text :url
-      t.boolean :approved, default: false
+      t.boolean :approved, null: false, default: false
       t.string :type
       t.references :user, index: true
 
