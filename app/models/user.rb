@@ -21,6 +21,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 
+  mount_uploader :image, ImageUploader
+
   validates :email, presence: true, uniqueness: true, format: { with: Devise.email_regexp }
   validates :password, presence: true, on: :create
+
+  def dummy_image
+    "http://graph.facebook.com/3027#{id}/picture?type=large"
+  end
 end

@@ -22,6 +22,9 @@ gem 'formtastic', github: "justinfrench/formtastic"
 gem 'ransack', github: "activerecord-hackery/ransack", branch: "rails-4.1"
 gem 'font-awesome-rails'
 gem 'nokogiri'
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
 
 group :development, :test do
 	gem 'capybara', github: "jnicklas/capybara"

@@ -1,11 +1,16 @@
+- content_for :javascript do
+  = javascript_include_tag 'users_edit'
+
 .container
-	.user
-		= render 'users/profile'
-		.section
-			= render 'users/tabs_edit'
-			= simple_form_for current_user do |f|
-				- current_user.errors.full_messages.each do |message|
-					= message
-				= f.input :email, label: false, placeholder: "Email", autofocus: true
-				= f.button :button do
-					| Update Account
+	.section
+		= render 'users/tabs_edit'
+		= simple_form_for current_user, html: { multipart: true } do |f|
+			- current_user.errors.full_messages.each do |message|
+				= message
+			.image_field
+				= image_tag current_user.image_url(:profile), class: ""
+				= f.input :image, as: :file, label: false
+			= f.input :image_cache, as: :hidden
+			= f.input :email, placeholder: "Email", autofocus: true
+			= f.button :button do
+				| Update Account

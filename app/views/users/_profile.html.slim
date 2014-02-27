@@ -1,7 +1,7 @@
 .section
 	.profile
 		.profile-image
-			= image_tag @user.try(:image)
+			= image_tag @user.image_url(:profile)
 		.profile-main
 			.profile-communities
 				ul

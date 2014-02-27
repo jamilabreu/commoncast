@@ -2,10 +2,10 @@
   = javascript_include_tag 'expanding', 'posts'
 
 .container
-	= render 'posts/new_post'
 	.section
 		= render 'posts/tabs'
 		- if @posts.present?
 			= render @posts
 		- else
-			| No posts to show. Join Communities
+			.posts-empty
+				| Messages broadcast to #{@community.present? ? "this community" : "your communities"} will appear here.

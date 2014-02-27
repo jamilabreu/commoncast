@@ -66,6 +66,6 @@ class UsersController < Devise::RegistrationsController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, culture_ids: [], school_ids: [])
+      params.require(:user).permit(:email, :password, :image, :image_cache, culture_ids: [], school_ids: [])
     end
 end

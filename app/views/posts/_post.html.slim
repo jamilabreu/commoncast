@@ -1,6 +1,9 @@
 .post id="#{post.id}"
 	.post-image
-		= link_to image_tag(post.user.image), post.user
+		- if post.user == current_user
+			= image_tag post.user.image_url
+		- else
+			= image_tag post.user.dummy_image
 	.post-main
 		- if post.approved
 			.post-check

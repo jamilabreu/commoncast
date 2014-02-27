@@ -1,3 +1,6 @@
+- content_for :stylesheet do
+  = stylesheet_link_tag 'select2'
+
 - content_for :javascript do
   = javascript_include_tag 'select2.min', 'users_edit_communities'
 
@@ -10,7 +13,7 @@
 		/ 	= current_user.schools.map(&:name)
 		/ 	= current_user.cultures.map(&:name)
 		= simple_form_for current_user do |f|
-			= f.association :schools
-			= f.association :cultures
-			= f.button :button do
+			= f.association :schools, label: "School(s)"
+			= f.association :cultures, label: "Culture(s)"
+			= f.button :button, { disable_with: 'Updating...' }do
 				| Update Communities
