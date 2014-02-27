@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140220194545) do
+ActiveRecord::Schema.define(version: 20140226175757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140220194545) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "communities", force: true do |t|
-    t.string   "name"
+    t.string   "name",        null: false
     t.string   "filter_name"
     t.string   "title_name"
     t.string   "slug"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20140220194545) do
     t.string   "title"
     t.text     "body"
     t.text     "url"
-    t.boolean  "approved",   default: false
+    t.boolean  "approved",   default: false, null: false
     t.string   "type"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -92,6 +92,16 @@ ActiveRecord::Schema.define(version: 20140220194545) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "user_posts", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_posts", ["post_id"], name: "index_user_posts_on_post_id", using: :btree
+  add_index "user_posts", ["user_id"], name: "index_user_posts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

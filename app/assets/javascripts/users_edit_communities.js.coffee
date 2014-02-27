@@ -1,0 +1,2 @@
+jQuery ->
+	$('select').select2()

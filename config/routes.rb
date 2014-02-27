@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      get '/fetch' => 'posts#fetch'
+      get '/posts/fetch' => 'posts#fetch'
+      get '/posts/cast/:id' => 'posts#cast', as: :cast_post
       get '/communities' => 'users#edit_communities', as: :edit_user_communities
       resources :users, only: [:index, :show, :update]
       root 'posts#index'

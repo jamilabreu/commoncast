@@ -1,18 +1,16 @@
-.container
-	.user
-		.section
-			= render 'users/tabs_edit'
-			h1 Edit Communities
-			div= link_to "account", edit_user_registration_path
-			div= link_to "logout", destroy_user_session_path, method: :delete
-			div
-				= current_user.communities.map(&:name)
-			div
-				= current_user.schools.map(&:name)
-				= current_user.cultures.map(&:name)
+- content_for :javascript do
+  = javascript_include_tag 'select2.min', 'users_edit_communities'
 
-			= simple_form_for current_user do |f|
-				= f.association :schools
-				= f.association :cultures
-				= f.button :button do
-					| Update Communities
+.container
+	.section
+		= render 'users/tabs_edit'
+		/ div
+		/ 	= current_user.communities.map(&:name)
+		/ div
+		/ 	= current_user.schools.map(&:name)
+		/ 	= current_user.cultures.map(&:name)
+		= simple_form_for current_user do |f|
+			= f.association :schools
+			= f.association :cultures
+			= f.button :button do
+				| Update Communities

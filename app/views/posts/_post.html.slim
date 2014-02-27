@@ -1,18 +1,22 @@
-.post
-	- if post.approved
-		= link_to root_path, class: "post-check" do
-			i.fa.fa-check
+.post id="#{post.id}"
 	.post-image
 		= link_to image_tag(post.user.image), post.user
 	.post-main
+		- if post.approved
+			.post-check
+				i.fa.fa-check-circle
 		.post-title
-			- if post.type == "Link"
+			- if post.is_a? Link
 				= link_to post.title, post.url, target: "_blank"
 			- else
 				= post.title.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe
-		.post-communities
-			= link_to root_path do
-				i.fa.fa-rss
+		.post-actions
+			- if post.is_retweet?(current_user)
+				= link_to "#", class: "retweet" do
+					i.fa.fa-retweet
+			- elsif post.user != current_user
+				= link_to cast_post_path(post), remote: true do
+					i.fa.fa-rss
 			= link_to post_path(post) do
 				i.fa.fa-comments-o
 			- post.communities.map do |community|

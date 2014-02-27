@@ -1,6 +1,7 @@
 $font-family: "proxima-nova"
 $black: #383A3D
 $blue: #00AED7
+$light-green: #88C198
 $grey: #979FA8
 
 // MIXINS
@@ -97,6 +98,7 @@ form
 		font-weight: 300
 		margin: 0
 		padding: 13px 15px
+		width: 100%
 		&:focus
 			outline: none
 	input.check_boxes
@@ -104,6 +106,8 @@ form
 		margin-right: 5px
 	textarea
 		resize: none
+	select
+		width: 100%
 	button
 		background: $blue
 		border: 0
@@ -115,6 +119,7 @@ form
 		font-weight: 300
 		padding: 14px 28px 12px
 		text-shadow: 1px 1px 1px #00A8A8
+		width: 100%
 		i
 			margin-left: 14px
 			position: relative
@@ -149,6 +154,21 @@ form
 		button
 			background: $blue
 			margin-top: 20px
+
+.edit_user
+	// background: red
+	margin: 26px auto 52px
+	width: 295px
+	label
+		color: $black
+		display: block
+		font-size: 14px
+		font-weight: 600
+		margin-bottom: 3px
+	.input
+		margin-bottom: 13px
+	button
+		margin-top: 13px
 
 // POSTS
 .new_post
@@ -211,7 +231,6 @@ form
 		&.sort
 			li
 				a
-					// font-size: 15px
 					padding: 0 15px
 					i
 						margin-right: 6px
@@ -223,8 +242,6 @@ form
 			li
 				a
 					padding: 0 16px
-					// i
-					// 	font-size: 19px
 
 // POST
 .post
@@ -246,7 +263,7 @@ form
 	padding: 2px 0 0 18px
 
 .post-check
-	color: #88C198
+	color: $light-green
 	float: right
 
 .post-title
@@ -255,20 +272,7 @@ form
 		text-decoration: underline
 
 .post-actions
-	float: left
-	a
-		color: #999
-		display: inline-block
-		padding: 20px
-		&:hover
-			color: #30A8A8
-		&:first-child
-			padding-right: 10px
-		&:last-child
-			padding-left: 10px
-
-.post-communities
-	margin-top: 6px
+	margin: 6px 0 0 1px
 	color: #999
 	font-size: 12px
 	a
@@ -277,11 +281,16 @@ form
 		i
 			font-size: 14px
 			margin-right: 3px
+			&.fa-retweet
+				color: $light-green
 		+ a
 			margin-left: 10px
 		&:hover
 			color: #00AED7
-
+		&.retweet
+			color: $light-green
+			cursor: default !important
+			pointer-events: none
 
 // POST SHOW
 .post-show

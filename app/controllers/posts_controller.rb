@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   require 'open-uri'
   require 'nokogiri'
 
-  before_action :set_post, only: [:show]
+  before_action :set_post, only: [:show, :cast]
 
   def index
     @post = Post.new
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to root_path(recent: true, all: true), notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
         format.html { render action: 'new' }
@@ -40,6 +40,11 @@ class PostsController < ApplicationController
       title = url
     end
     @title = title.strip
+  end
+
+  def cast
+    @post.users << current_user
+  rescue
   end
 
   private

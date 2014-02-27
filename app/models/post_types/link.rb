@@ -1,7 +1,6 @@
 class Link < Post
 	before_validation :set_url
 
-	validates :title, presence: true
 	validates :url, presence: true
 
 	def set_url

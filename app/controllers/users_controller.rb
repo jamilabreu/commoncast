@@ -7,7 +7,7 @@ class UsersController < Devise::RegistrationsController
 
   def show
     @post = Post.new
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = Post.preload(:communities, :users, :user).joins(:users).where(users: { id: @user }).order("user_posts.created_at DESC")
   end
 
   def edit
